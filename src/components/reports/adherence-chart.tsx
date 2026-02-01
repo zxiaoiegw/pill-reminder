@@ -1,8 +1,19 @@
 'use client';
 import { useMedication } from '@/context/medication-context';
-import { Bar, BarChart, ResponsiveContainer, XAxis, YAxis, Tooltip, CartesianGrid } from 'recharts';
-import { ChartTooltipContent } from '@/components/ui/chart';
+import { Bar, BarChart, CartesianGrid, XAxis, YAxis, Tooltip } from 'recharts';
+import { ChartTooltipContent, ChartContainer, type ChartConfig } from '@/components/ui/chart';
 import { Skeleton } from '@/components/ui/skeleton';
+
+const chartConfig = {
+  taken: {
+    label: 'Taken',
+    color: 'hsl(var(--primary))',
+  },
+  scheduled: {
+    label: 'Scheduled',
+    color: 'hsl(var(--primary))',
+  },
+} satisfies ChartConfig;
 
 export function AdherenceChart() {
   const { logs, medications, isClient } = useMedication();
@@ -37,8 +48,8 @@ export function AdherenceChart() {
   }
 
   return (
-    <ResponsiveContainer width="100%" height={350}>
-      <BarChart data={data}>
+    <ChartContainer config={chartConfig} className="h-[350px] w-full">
+      <BarChart accessibilityLayer data={data}>
         <CartesianGrid vertical={false} strokeDasharray="3 3" stroke="hsl(var(--border))" />
         <XAxis
           dataKey="day"
@@ -59,9 +70,9 @@ export function AdherenceChart() {
             cursor={{ fill: 'hsl(var(--secondary))', radius: 'var(--radius)' }}
             content={<ChartTooltipContent indicator="dot" />}
         />
-        <Bar dataKey="scheduled" fill="hsl(var(--primary))" opacity={0.2} radius={[4, 4, 0, 0]} name="Scheduled" />
-        <Bar dataKey="taken" fill="hsl(var(--primary))" radius={[4, 4, 0, 0]} name="Taken" />
+        <Bar dataKey="scheduled" fill="var(--color-scheduled)" opacity={0.2} radius={[4, 4, 0, 0]} name="Scheduled" />
+        <Bar dataKey="taken" fill="var(--color-taken)" radius={[4, 4, 0, 0]} name="Taken" />
       </BarChart>
-    </ResponsiveContainer>
+    </ChartContainer>
   );
 }
