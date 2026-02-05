@@ -131,7 +131,7 @@ export function PrescriptionScanDialog({
 
   return (
     <Dialog open={open} onOpenChange={handleClose}>
-      <DialogContent className="sm:max-w-xl">
+      <DialogContent className="sm:max-w-xl max-h-[90vh] overflow-y-auto">
         <DialogHeader>
           <DialogTitle>Scan prescription</DialogTitle>
           <DialogDescription>
