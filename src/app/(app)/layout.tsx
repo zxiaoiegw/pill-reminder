@@ -85,10 +85,10 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
         </SidebarMenu>
       </Sidebar>
       <SidebarInset>
-        <header className="sticky top-0 z-10 flex h-16 items-center justify-between border-b bg-background/80 px-4 backdrop-blur-sm">
+        <header className="sticky top-0 z-10 flex h-16 w-full max-w-full items-center justify-between border-b bg-background/80 px-4 backdrop-blur-sm overflow-hidden">
           <MobileHeaderTrigger />
           <SignedIn>
-            <div className="ml-auto flex items-center gap-4">
+            <div className="ml-auto flex items-center gap-3 shrink-0">
               <NotificationDropdown />
               <UserButton />
             </div>
