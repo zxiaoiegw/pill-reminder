@@ -66,7 +66,7 @@ export function MedicationFormSheet({ open, onOpenChange, medication, initialVal
         name: initialValues.name || '',
         dosage: initialValues.dosage || '',
         schedule: {
-          frequency: initialValues.schedule?.frequency || 'daily',
+          frequency: initialValues.schedule?.frequency || 'daily' as const,
           times: initialValues.schedule?.times?.map((t) => ({ value: t })) || [{ value: '09:00' }],
           days: initialValues.schedule?.days || [],
         },
@@ -76,11 +76,11 @@ export function MedicationFormSheet({ open, onOpenChange, medication, initialVal
         },
       };
     }
-    
+
     return {
       name: '',
       dosage: '',
-      schedule: { frequency: 'daily', times: [{ value: '09:00' }], days: [] },
+      schedule: { frequency: 'daily' as const, times: [{ value: '09:00' }], days: [] },
       refill: { quantity: 30, reminderThreshold: 5 },
     };
   };
@@ -102,7 +102,7 @@ export function MedicationFormSheet({ open, onOpenChange, medication, initialVal
       form.reset(getDefaultValues());
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [open, JSON.stringify(medication ?? null), JSON.stringify(initialValues ?? null)]);
+  }, [open, medication?.id, medication?.name, initialValues?.name, initialValues?.dosage]);
 
   function onSubmit(values: z.infer<typeof formSchema>) {
     const payload = {

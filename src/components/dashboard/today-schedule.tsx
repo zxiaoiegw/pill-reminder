@@ -64,12 +64,12 @@ export function TodaySchedule() {
   };
 
   return (
-    <Card>
+    <Card className="overflow-hidden">
       <CardHeader>
         <CardTitle>Today's Schedule</CardTitle>
-        
+
       </CardHeader>
-      <CardContent>
+      <CardContent className="overflow-hidden">
         {!isClient ? (
           <div className="space-y-4">
             <Skeleton className="h-[68px] w-full" />
@@ -79,20 +79,21 @@ export function TodaySchedule() {
         ) : todaySchedules.length > 0 ? (
           <ul className="space-y-4">
             {todaySchedules.map(({ medication, time, isTaken }, index) => (
-              <li key={`${medication.id}-${time}-${index}`} className="flex items-center justify-between p-3 rounded-lg bg-secondary/50">
-                <div className="flex items-center gap-4">
-                  <div className={`p-2 rounded-full ${isTaken ? 'bg-accent/20 text-accent' : 'bg-primary/20 text-primary'}`}>
+              <li key={`${medication.id}-${time}-${index}`} className="flex items-center justify-between gap-2 p-3 rounded-lg bg-secondary/50 min-w-0">
+                <div className="flex items-center gap-3 min-w-0 flex-1">
+                  <div className={`p-2 rounded-full shrink-0 ${isTaken ? 'bg-accent/20 text-accent' : 'bg-primary/20 text-primary'}`}>
                     {isTaken ? <CheckCircle size={20} /> : <Clock size={20} />}
                   </div>
-                  <div>
-                    <p className="font-semibold">{medication.name}</p>
-                    <p className="text-sm text-muted-foreground">{medication.dosage} - {new Date(`1970-01-01T${time}`).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</p>
+                  <div className="min-w-0">
+                    <p className="font-semibold truncate">{medication.name}</p>
+                    <p className="text-sm text-muted-foreground truncate">{medication.dosage} - {new Date(`1970-01-01T${time}`).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</p>
                   </div>
                 </div>
                 <Button
                   size="sm"
                   variant={isTaken ? "ghost" : "default"}
                   disabled={isTaken}
+                  className="shrink-0"
                   onClick={() => handleLogIntake(medication.id, medication.name, medication.dosage, time)}
                 >
                   {isTaken ? 'Taken' : 'Log Now'}

@@ -47,14 +47,14 @@ export function AdherenceOverview() {
   }).reverse();
 
   return (
-    <Card>
+    <Card className="overflow-hidden">
       <CardHeader>
         <CardTitle>Weekly Report</CardTitle>
         <CardDescription>Your progress over the last 7 days.</CardDescription>
       </CardHeader>
-      <CardContent>
+      <CardContent className="overflow-hidden p-2 sm:p-6">
         {isClient ? (
-          <ChartContainer config={chartConfig} className="h-[250px] w-full">
+          <ChartContainer config={chartConfig} className="h-[250px] w-full max-w-full">
             <BarChart accessibilityLayer data={data} margin={{ top: 10, right: 10, left: -20, bottom: 0 }}>
                <Tooltip
                   cursor={{ fill: 'hsl(var(--secondary))', radius: 'var(--radius)' }}
