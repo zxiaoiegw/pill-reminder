@@ -18,6 +18,7 @@ import {
   BarChart3,
 } from 'lucide-react';
 import { NotificationDropdown } from '@/components/notifications/notification-dropdown';
+import { GlobalAIAssistant } from '@/components/ai/global-ai-assistant';
 import { SignedIn, UserButton } from '@clerk/nextjs';
 import { usePathname } from 'next/navigation';
 import { Logo, LogoIcon } from '@/components/icons';
@@ -97,6 +98,7 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
         <main className="flex-1 p-4 md:p-6 lg:p-8">
           {children}
         </main>
+        <GlobalAIAssistant />
       </SidebarInset>
     </SidebarProvider>
   );
