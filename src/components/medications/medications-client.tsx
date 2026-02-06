@@ -61,7 +61,7 @@ export function MedicationsClient() {
           <Scan className="mr-2 h-4 w-4" />
           Scan prescription
         </Button>
-        <Button onClick={handleAddNew}>
+        <Button onClick={() => handleAddNew()}>
           <PlusCircle className="mr-2 h-4 w-4" />
           Add Medication
         </Button>
@@ -70,7 +70,7 @@ export function MedicationsClient() {
       <Card key={tableKey}>
         <CardHeader>
           <CardTitle>Your Medications</CardTitle>
-          
+
         </CardHeader>
         <CardContent>
           <Table>
@@ -99,7 +99,7 @@ export function MedicationsClient() {
                     </TableCell>
                     <TableCell>
                       {med.refill.quantity <= med.refill.reminderThreshold ? (
-                        <Badge variant="destructive">Low: {med.refill.quantity} left</Badge>
+                        <Badge variant="destructive" className="whitespace-nowrap w-fit px-3">Low: {med.refill.quantity} left</Badge>
                       ) : (
                         <span>{med.refill.quantity} left</span>
                       )}

@@ -188,10 +188,10 @@ export function GlobalAIAssistant() {
     <Sheet open={open} onOpenChange={setOpen}>
       <SheetTrigger asChild>
         <button
-          className="fixed bottom-6 right-6 z-50 p-2"
+          className="fixed bottom-6 right-4 z-50 flex h-10 w-10 items-center justify-center rounded-full bg-primary shadow-lg shadow-primary/25 transition-all duration-300 hover:scale-110 hover:shadow-xl hover:shadow-primary/30 active:scale-95"
           aria-label="Open AI Assistant"
         >
-          <Sparkles className="h-7 w-7 text-sidebar-foreground" />
+          <Sparkles className="h-5 w-5 text-primary-foreground" />
         </button>
       </SheetTrigger>
       <SheetContent className="w-full sm:max-w-md flex flex-col p-0">
