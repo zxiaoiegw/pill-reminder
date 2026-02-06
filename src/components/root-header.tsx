@@ -19,7 +19,7 @@ export function RootHeader() {
   if (isAppRoute) return null;
 
   return (
-    <header className="flex justify-end items-center gap-4 px-4 py-2 border-b">
+    <header className="sticky top-0 z-50 flex justify-end items-center gap-4 px-4 py-3 border-b bg-background/80 backdrop-blur-md transition-all duration-300">
       <SignedOut>
         <SignInButton mode="modal" />
         <SignUpButton mode="modal" />
